@@ -5,6 +5,7 @@ import Cctv from './components/Cctv';
 import Home from './components/Home';
 import About from './components/About';
 import Contact from './components/Contact';
+import Login from './components/Login';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" element={<Home/>} exact={true} />
         <Route path="/About" element={<About/>} />
         <Route path="/Contact" element={<Contact/>} />
+        <Route path="/Login" element={<Login/>} />
       </Routes>
     </Router>
   );

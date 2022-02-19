@@ -2,6 +2,12 @@ import React from 'react';
 import * as BsIcons from 'react-icons/bs';
 export const SidebarData = [
 	{
+		title : 'Login',
+		path: '/Login',
+		icon: <BsIcons.BsPersonCircle />,
+		cName: 'nav-text'
+	},
+	{
 		title: 'Cctv',
 		path: '/Cctv',
 		icon: <BsIcons.BsPersonBoundingBox />,
