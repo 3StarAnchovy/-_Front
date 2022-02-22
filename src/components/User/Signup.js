@@ -31,7 +31,7 @@ function Signup() {
         console.log("클릭");
         let body = {
             id: Id,
-            password: Password,
+            pw: Password,
             name: Name,
             email: Email
         }
