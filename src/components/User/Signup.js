@@ -36,7 +36,7 @@ function Signup() {
             email: Email
         }
         console.log(body)
-        fetch('http://localhost:3001/User/signup',
+        fetch('http://localhost:3001/User/SignUp',
             {
                 method: "POST",
                 headers: {
@@ -45,7 +45,7 @@ function Signup() {
                 body: JSON.stringify(body)
             }).then(res => {
                 if (res.ok) alert("회원가입 완료");
-                else alert("로그인 실패");
+                else alert("회원가입 실패");
             })
     }
 
@@ -84,7 +84,7 @@ function Signup() {
                     </Form.Group>
 
                     <div className="d-grid gap-1">
-                        <Button variant="primary" type="submit" size="lg" onClick={onSubmit}>
+                        <Button variant="primary" type="submit" size="sm" onClick={onSubmit}>
                             회원가입
                         </Button>
                     </div>
