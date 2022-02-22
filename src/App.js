@@ -6,7 +6,7 @@ import Home from './components/Home';
 import About from './components/About';
 import Contact from './components/Contact';
 import Login from './components/User/Login';
-import SignUp from './components/User/SignUp';
+import SignUp from './components/User/Signup';
 
 function App() {
   return (
