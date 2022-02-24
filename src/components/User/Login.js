@@ -62,11 +62,6 @@ function Login() {
                                 회원가입
                             </Button>
                         </Link>
-                        <Link to='/Signup'>
-                            <Button variant="success" size='sm'>
-                                회원가입
-                            </Button>
-                        </Link>
                     </div>
                 </Form>
             </Container>
