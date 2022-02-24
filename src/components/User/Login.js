@@ -31,9 +31,8 @@ function Login() {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify(body)
-            }).then(res => {
-                if (res.ok) alert("로그인 완료");
-                else alert("로그인 실패");
+            }).then(res => res.json()).then(data => {
+                console.log(data);
             })
     }
 
@@ -59,7 +58,12 @@ function Login() {
                             로그인
                         </Button>
                         <Link to='/Signup'>
-                            <Button variant="success" size = 'sm'>
+                            <Button variant="success" size='sm'>
+                                회원가입
+                            </Button>
+                        </Link>
+                        <Link to='/Signup'>
+                            <Button variant="success" size='sm'>
                                 회원가입
                             </Button>
                         </Link>
