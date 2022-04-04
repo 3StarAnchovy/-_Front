@@ -6,7 +6,7 @@ import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function Signup() {
+function SignUp() {
     //입력값 스테이트
     const [Id, setId] = useState(false);
     const [Password, setPassword] = useState(false);
@@ -141,5 +141,5 @@ function Signup() {
     );
 }
 
-export default Signup
+export default SignUp
 //SignUp test

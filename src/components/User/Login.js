@@ -57,7 +57,7 @@ function Login() {
                         <Button variant="primary" type="submit" size='sm' onClick={onSubmit}>
                             로그인
                         </Button>
-                        <Link to='/Signup'>
+                        <Link to='/SignUp'>
                             <Button variant="success" size='sm'>
                                 회원가입
                             </Button>
