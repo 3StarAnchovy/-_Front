@@ -32,8 +32,10 @@ function Login() {
                 },
                 body: JSON.stringify(body)
             }).then(res => res.json()).then(data => {
-                console.log(data);
-            })
+                if(data.result === 'true')
+                    alert('로그인 성공!');
+                else alert('로그인 실패');
+            });
     }
 
     return (

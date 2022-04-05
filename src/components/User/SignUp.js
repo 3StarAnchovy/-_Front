@@ -74,15 +74,16 @@ function SignUp() {
                 email: Email
             }
             console.log(body)
-            fetch('http://localhost:3001/User/signup',
+            fetch('http://localhost:3001/User/SignUp',
                 {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
                     },
                     body: JSON.stringify(body)
-                }).then(res => {
-                    if (res.ok) alert("회원가입 완료");
+                }).then(res => res.json()).then(data => {
+                    if (data.result === 'true')
+                        alert("회원가입 완료");
                     else alert("회원가입 실패");
                 })
         }
