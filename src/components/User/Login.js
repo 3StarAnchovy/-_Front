@@ -40,7 +40,7 @@ function Login() {
 
     return (
         <div>
-            <Container className="panel" style={{ marginTop: '30px', marginBottom: '30px', maxWidth: '300px' }}>
+            <Container className="panel" style={{ marginTop: '40px', marginBottom: '30px', maxWidth: '300px' }}>
                 <Form>
                     <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
                         <Col>
@@ -53,14 +53,13 @@ function Login() {
                             <Form.Control type="password" placeholder="Password" onChange={onPasswordHandler} />
                         </Col>
                     </Form.Group>
-                    <br />
 
                     <div className="d-grid gap-1">
-                        <Button variant="primary" type="submit" size='sm' onClick={onSubmit}>
+                        <Button variant="primary" type="submit" size="sm" onClick={onSubmit}>
                             로그인
                         </Button>
-                        <Link to='/SignUp'>
-                            <Button variant="success" size='sm'>
+                        <Link to='/SignUp' style={{ display: 'inline-grid', textDecoration: 'none' }}>
+                            <Button variant="success" size="sm">
                                 회원가입
                             </Button>
                         </Link>
