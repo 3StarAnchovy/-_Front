@@ -32,9 +32,30 @@ function Login() {
                 },
                 body: JSON.stringify(body)
             }).then(res => res.json()).then(data => {
-                if(data.result === 'true')
+                if (data.result === 'true'){
                     alert('로그인 성공!');
+                }
+                else if(data.result === 'checkId') {
+                    alert('존재하지 않는 아이디입니다.');
+                }
+                else if(data.result === 'checkPw') {
+                    alert('비밀번호가 일치하지 않습니다.');
+                }
                 else alert('로그인 실패');
+            });
+    }
+
+    const onLogout = (e) => {
+        e.preventDefault();
+        fetch('http://localhost:3001/User/Logout',
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                }
+            }).then(res => res.json()).then(data => {
+                if (data.result === 'true')
+                    alert('로그아웃 성공');
             });
     }
 
@@ -57,6 +78,9 @@ function Login() {
                     <div className="d-grid gap-1">
                         <Button variant="primary" type="submit" size="sm" onClick={onSubmit}>
                             로그인
+                        </Button>
+                        <Button variant="primary" type="submit" size="sm" onClick={onLogout}>
+                            로그아웃
                         </Button>
                         <Link to='/SignUp' style={{ display: 'inline-grid', textDecoration: 'none' }}>
                             <Button variant="success" size="sm">
