@@ -6,6 +6,10 @@ import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from "react-router-dom";
+import axios from 'axios';
+
+axios.defaults.withCredentials = true;//백 & 서버 쿠키 공유 해결방법
+
 
 function Login() {
     const [Id, setId] = useState(false);
@@ -24,15 +28,33 @@ function Login() {
             id: Id,
             pw: Password
         }
+        // const option = {
+        //     url :'http://localhost:3001/User/Login',
+        //     method: 'POST',
+        //     header: {
+        //         'Accept': 'application/json',
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: body
+        // }
+        // axios.post(option).then(res => {
+        //     if (res.result === 'true')
+        //         alert('로그인성공');
+        // })
+
+        // axios('http://localhost:3001/User/Login')
         fetch('http://localhost:3001/User/Login',
             {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
+                credentials : 'include',
                 body: JSON.stringify(body)
             }).then(res => res.json()).then(data => {
                 if (data.result === 'true'){
+                    console.log(data.sessionID);
+                    localStorage.setItem(Id,data.sessionID);
                     alert('로그인 성공!');
                 }
                 else if(data.result === 'checkId') {
@@ -52,10 +74,16 @@ function Login() {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                }
+                    "Authorization" : localStorage.getItem(Id)
+                },
+                credentials: 'include',
             }).then(res => res.json()).then(data => {
                 if (data.result === 'true')
+                {
+                    console.log(localStorage);
+                    localStorage.removeItem(Id);
                     alert('로그아웃 성공');
+                }
             });
     }
 
