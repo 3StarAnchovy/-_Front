@@ -11,7 +11,7 @@ import axios from 'axios';
 axios.defaults.withCredentials = true;//백 & 서버 쿠키 공유 해결방법
 
 
-function Login() {
+function Login(props) {
     const [Id, setId] = useState(false);
     const [Password, setPassword] = useState(false);
 
@@ -28,21 +28,6 @@ function Login() {
             id: Id,
             pw: Password
         }
-        // const option = {
-        //     url :'http://localhost:3001/User/Login',
-        //     method: 'POST',
-        //     header: {
-        //         'Accept': 'application/json',
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: body
-        // }
-        // axios.post(option).then(res => {
-        //     if (res.result === 'true')
-        //         alert('로그인성공');
-        // })
-
-        // axios('http://localhost:3001/User/Login')
         fetch('http://localhost:3001/User/Login',
             {
                 method: "POST",
@@ -54,7 +39,8 @@ function Login() {
             }).then(res => res.json()).then(data => {
                 if (data.result === 'true'){
                     console.log(data.sessionID);
-                    localStorage.setItem(Id,data.sessionID);
+                    localStorage.setItem(Id, data.sessionID);
+                    props.setUserInfo(Id);
                     alert('로그인 성공!');
                 }
                 else if(data.result === 'checkId') {

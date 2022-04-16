@@ -6,9 +6,37 @@ import { SidebarData } from './SidebarData';
 import './Navbar.css';
 /* 아이콘 컬러 전체 변경 기능 */
 import { IconContext } from 'react-icons';
-function Navbar() {
+
+const UserInfo = ({ user }) => {
+	console.log(user)
+	return (
+
+		SidebarData.map((item, index) => {
+			<div>
+				<h1>
+					{user}
+				</h1>
+			</div>
+			return (
+				<div>
+					<li key={index} className={item.cName}>
+						<Link to={item.path}>
+							{item.icon}
+							<span>{item.title}</span>
+						</Link>
+					</li>
+				</div>
+			);
+		}))
+}
+
+function Navbar(props) {
 	const [sidebar, setSidebar] = useState(false);
+	const [user, setUser] = useState(false);
 	const showSidebar = () => setSidebar(!sidebar);
+	const getUserInfo = () => {
+		setUser(user);
+	};
 	return (
 		<>
 			{/* 아이콘 컬러 전체 변경 기능 */}
@@ -27,16 +55,7 @@ function Navbar() {
 							</Link>
 						</li>
 						{/* SidebarData를 순서대로 담기*/}
-						{SidebarData.map((item, index) => {
-							return (
-								<li key={index} className={item.cName}>
-									<Link to={item.path}>
-										{item.icon}
-										<span>{item.title}</span>
-									</Link>
-								</li>
-							);
-						})}
+						{localStorage.getItem(props.UserInfo) ? <UserInfo user='test'></UserInfo> : <UserInfo user='fuck'></UserInfo>}
 					</ul>
 				</nav>
 			</IconContext.Provider>

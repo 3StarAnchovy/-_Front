@@ -7,20 +7,25 @@ import About from './components/About';
 import Contact from './components/Contact';
 import Login from './components/User/Login';
 import SignUp from './components/User/SignUp';
+import React, { useState } from 'react';
 
 function App() {
+  const [UserInfo, setUserInfo] = useState(false);
+  console.log(UserInfo);
   return (
+    <div>
     <Router>
-      <Navbar />
+      <Navbar UserInfo = {UserInfo} />
       <Routes>
         <Route path="/Cctv" element={<Cctv/>} />
         <Route path="/" element={<Home/>} exact={true} />
         <Route path="/About" element={<About/>} />
         <Route path="/Contact" element={<Contact/>} />
-        <Route path="/Login" element={<Login/>} />
+        <Route path="/Login" element={<Login setUserInfo = {setUserInfo}/>} />
         <Route path="/SignUp" element={<SignUp/>} />
       </Routes>
     </Router>
+    </div>
   );
 }
 // route로 감쌀 때 componet가 아니라 element

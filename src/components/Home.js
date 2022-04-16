@@ -1,6 +1,6 @@
 import React, { Component, useState, useEffect } from 'react';
 //import { BrowserRouter, Route } from 'react-router-dom';
-//import WeatherInfo from './WeatherInfo';
+import WeatherInfo from './WeatherInfo';
 
 class Hello extends Component {
 	render() {
@@ -41,6 +41,7 @@ class Home extends Component {
 								.then(data => this.setState({ message: { test: data.test } }));
 						}.bind(this)
 					}></Hello>
+					<WeatherInfo></WeatherInfo>
 			</div >
 		);
 	}
