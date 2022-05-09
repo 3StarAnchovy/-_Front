@@ -8,12 +8,6 @@ export const SidebarData = [
 		cName: 'nav-text'
 	},
 	{
-		title : 'Login',
-		path: '/Login',
-		icon: <BsIcons.BsPersonCircle />,
-		cName: 'nav-text'
-	},
-	{
 		title: 'Cctv',
 		path: '/Cctv',
 		icon: <BsIcons.BsPersonBoundingBox />,
