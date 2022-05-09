@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import * as BsIcons from 'react-icons/bs';
+import Button from "react-bootstrap/Button";
 import { Link } from 'react-router-dom';
 import { SidebarData } from './SidebarData';
 import './Navbar.css';
@@ -9,6 +10,25 @@ import './Navbar.css';
 import { IconContext } from 'react-icons';
 
 const UserInfo = ({ user }) => {
+	const onLogout = (e) => {
+        e.preventDefault();
+        fetch('http://localhost:3001/User/Logout',
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization" : localStorage.getItem(user)
+                },
+                credentials: 'include',
+            }).then(res => res.json()).then(data => {
+                if (data.result === 'true')
+                {
+                    console.log(localStorage);
+                    localStorage.removeItem(user);
+                    alert('로그아웃 성공');
+                }
+            });
+    }
 	console.log(user);
 	return (
 		<nav>
@@ -18,10 +38,9 @@ const UserInfo = ({ user }) => {
 					<span>Login</span>
 				</Link>
 			</li> : <li className='nav-text'>
-				<Link to='/'>
-					<BsIcons.BsPersonCircle />
-					<span>LogOut</span>
-				</Link>
+				<Button variant="primary" type="submit" size="sm" onClick={onLogout}>
+					로그아웃
+				</Button>
 			</li>
 			}
 
@@ -62,7 +81,7 @@ function Navbar(props) {
 							</Link>
 						</li>
 						{/* SidebarData를 순서대로 담기*/}
-						{localStorage.getItem(props.UserInfo) ? <UserInfo user='test'></UserInfo> : <UserInfo user='null'></UserInfo>}
+						{localStorage.getItem(props.UserInfo) ? <UserInfo user={props.UserInfo}></UserInfo> : <UserInfo user='null'></UserInfo>}
 					</ul>
 				</nav>
 			</IconContext.Provider>

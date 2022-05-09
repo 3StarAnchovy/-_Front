@@ -34,19 +34,19 @@ function Login(props) {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                credentials: 'include',
+                credentials : 'include',
                 body: JSON.stringify(body)
             }).then(res => res.json()).then(data => {
-                if (data.result === 'true') {
+                if (data.result === 'true'){
                     console.log(data.sessionID);
                     localStorage.setItem(Id, data.sessionID);
                     props.setUserInfo(Id);
                     alert('로그인 성공!');
                 }
-                else if (data.result === 'checkId') {
+                else if(data.result === 'checkId') {
                     alert('존재하지 않는 아이디입니다.');
                 }
-                else if (data.result === 'checkPw') {
+                else if(data.result === 'checkPw') {
                     alert('비밀번호가 일치하지 않습니다.');
                 }
                 else alert('로그인 실패');
@@ -60,11 +60,12 @@ function Login(props) {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    "Authorization": localStorage.getItem(Id)
+                    "Authorization" : localStorage.getItem(Id)
                 },
                 credentials: 'include',
             }).then(res => res.json()).then(data => {
-                if (data.result === 'true') {
+                if (data.result === 'true')
+                {
                     console.log(localStorage);
                     localStorage.removeItem(Id);
                     alert('로그아웃 성공');
@@ -83,7 +84,7 @@ function Login(props) {
                     </Form.Group>
 
                     <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
-                        <Col>
+                    ñ    <Col>
                             <Form.Control type="password" placeholder="Password" onChange={onPasswordHandler} />
                         </Col>
                     </Form.Group>
