@@ -12,7 +12,7 @@ import React, { useState } from 'react';
 
 function App() {
   const [UserInfo, setUserInfo] = useState(false);
-  console.log(UserInfo);
+  //console.log(UserInfo);
   return (
     <div>
     <Router>

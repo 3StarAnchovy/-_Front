@@ -53,24 +53,24 @@ function Login(props) {
             });
     }
 
-    const onLogout = (e) => {
-        e.preventDefault();
-        fetch('http://localhost:3001/User/Logout',
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": localStorage.getItem(Id)
-                },
-                credentials: 'include',
-            }).then(res => res.json()).then(data => {
-                if (data.result === 'true') {
-                    console.log(localStorage);
-                    localStorage.removeItem(Id);
-                    alert('로그아웃 성공');
-                }
-            });
-    }
+    // const onLogout = (e) => {
+    //     e.preventDefault();
+    //     fetch('http://localhost:3001/User/Logout',
+    //         {
+    //             method: "POST",
+    //             headers: {
+    //                 "Content-Type": "application/json",
+    //                 "Authorization": localStorage.getItem(Id)
+    //             },
+    //             credentials: 'include',
+    //         }).then(res => res.json()).then(data => {
+    //             if (data.result === 'true') {
+    //                 console.log(localStorage);
+    //                 localStorage.removeItem(Id);
+    //                 alert('로그아웃 성공');
+    //             }
+    //         });
+    // }
 
     return (
         <div>
@@ -92,9 +92,9 @@ function Login(props) {
                         <Button variant="primary" type="submit" size="sm" onClick={onSubmit}>
                             로그인
                         </Button>
-                        <Button variant="primary" type="submit" size="sm" onClick={onLogout}>
+                        {/* <Button variant="primary" type="submit" size="sm" onClick={onLogout}>
                             로그아웃
-                        </Button>
+                        </Button> */}
                         <Link to='/SignUp' style={{ display: 'inline-grid', textDecoration: 'none' }}>
                             <Button variant="success" size="sm">
                                 회원가입

@@ -1,6 +1,30 @@
 import React, { Component, useState, useEffect } from 'react';
 //import { BrowserRouter, Route } from 'react-router-dom';
 import WeatherInfo from './WeatherInfo';
+import styled from 'styled-components';
+import { Line } from 'react-chartjs-2';
+//import Chart from 'chart.js/auto';
+import {
+	Chart as ChartJS,
+	CategoryScale,
+	LinearScale,
+	PointElement,
+	LineElement,
+	Title,
+	Tooltip,
+	Legend,
+} from 'chart.js';
+
+ChartJS.register(
+	CategoryScale,
+	LinearScale,
+	PointElement,
+	LineElement,
+	Title,
+	Tooltip,
+	Legend
+);
+
 
 class Hello extends Component {
 	render() {
@@ -19,32 +43,46 @@ class Hello extends Component {
 		);
 	}
 }
+const data = {
+	datasets: [
+		{
+			type: 'line',
+			label: 'Dataset 1',
+			borderColor: 'rgb(54, 162, 235)',
+			borderWidth: 2,
+			data: [
+				{ x: 'January', y: 1 },
+				{ x: 'February', y: 2 },
+				{ x: 'March', y: 3 },
+				{ x: 'April', y: null },
+				{ x: 'May', y: 5 }
+			],
+			yAxisID: 'y_sub',
+		}]
+};
 
-class Home extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			message: { test: "who am i" }
-		}
-	}
-	render() {
-		return (
-			<div className="Home">
-				<Hello
-					message={this.state.message.test}
-					getMessage={
-						function (e) {
-							//this.setState({ message: { test: "fuck" } });
-							console.log("받아옵니다");
-							fetch('http://localhost:3001')
-								.then(res => res.json())
-								.then(data => this.setState({ message: { test: data.test } }));
-						}.bind(this)
-					}></Hello>
-					<WeatherInfo></WeatherInfo>
-			</div >
-		);
-	}
+
+const Chart = () => {
+
+	return (
+		<Container>
+			<Line type="line" data={data} />
+		</Container>
+	);
+};
+
+
+const Container = styled.div`
+	width: 90vw;
+	max-width: 900px;
+	`;
+
+const Home = () => {
+	return (
+		<div>
+			<Chart></Chart>
+		</div>
+	)
 }
 
 export default Home;
