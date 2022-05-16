@@ -8,11 +8,10 @@ import Contact from './components/Contact';
 import Login from './components/User/Login';
 import SignUp from './components/User/SignUp';
 import Logout from './components/User/Logout';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 function App() {
   const [UserInfo, setUserInfo] = useState(false);
-  //console.log(UserInfo);
   return (
     <div>
     <Router>

@@ -9,31 +9,38 @@ import './Navbar.css';
 /* 아이콘 컬러 전체 변경 기능 */
 import { IconContext } from 'react-icons';
 
-const UserInfo = ({user}) => {
+const UserInfo = (props) => {
+	const [isLogined, setisLogined] = useState(false);
+	useEffect(() => {
+		console.log(props.UserInfo, "this useeffect");
+		if (props.UserInfo)
+			setisLogined(true);
+		else
+			setisLogined(false);
+	})
 	const onLogout = (e) => {
-        e.preventDefault();
-        fetch('http://localhost:3001/User/Logout',
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization" : localStorage.getItem(user)
-                },
-                credentials: 'include',
-            }).then(res => res.json()).then(data => {
-                if (data.result === 'true')
-                {
-                    console.log(localStorage);
-                    localStorage.removeItem(user);
-					//props.props.setUserInfo(false);
-                    alert('로그아웃 성공');
-                }
-            });
-    }
-	console.log(user);
+		e.preventDefault();
+		fetch('http://localhost:3001/User/Logout',
+			{
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+					"Authorization": localStorage.getItem(props.UserInfo)
+				},
+				credentials: 'include',
+			}).then(res => res.json()).then(data => {
+				if (data.result === 'true') {
+					console.log(localStorage);
+					localStorage.removeItem(props.UserInfo);
+					props.setUserInfo(false);
+					console.log(props);
+					alert('로그아웃 성공');
+				}
+			});
+	}
 	return (
 		<nav>
-			{user === 'null' ? <li className='nav-text'>
+			{isLogined === false ? <li className='nav-text'>
 				<Link to='/Login'>
 					<BsIcons.BsPersonCircle />
 					<span>Login</span>
@@ -82,7 +89,7 @@ function Navbar(props) {
 							</Link>
 						</li>
 						{/* SidebarData를 순서대로 담기*/}
-						{localStorage.getItem(props.UserInfo) ? <UserInfo user={props.UserInfo} setUserInfo = {props.setUserInfo}></UserInfo> : <UserInfo user='null'></UserInfo>}
+						<UserInfo UserInfo={props.UserInfo} setUserInfo={props.setUserInfo}></UserInfo>
 					</ul>
 				</nav>
 			</IconContext.Provider>

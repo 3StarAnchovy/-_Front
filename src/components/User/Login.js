@@ -40,7 +40,9 @@ function Login(props) {
                 if (data.result === 'true') {
                     console.log(data.sessionID);
                     localStorage.setItem(Id, data.sessionID);
+                    console.log(props);
                     props.setUserInfo(Id);
+
                     alert('로그인 성공!');
                 }
                 else if (data.result === 'checkId') {
@@ -71,7 +73,7 @@ function Login(props) {
     //             }
     //         });
     // }
-
+    console.log(props.UserInfo,"this");
     return (
         <div>
             <Container className="panel" style={{ marginTop: '40px', marginBottom: '30px', maxWidth: '300px' }}>

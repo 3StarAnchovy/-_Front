@@ -3,17 +3,26 @@ import React, { Component, useState, useEffect } from 'react';
 import Chart from './Chart/Chart';
 
 const Home = (props) => {
-	const [User,setUser] = useState(false);
-	return (
-		// localStorage.getItem(props.UserInfo) ?
-		// <div>
-		// 	<Chart></Chart>
-		// </div> :
-		// <div></div>
-		<div>
-			<Chart></Chart>
-		</div>
-	)
+	//const [User, setUser] = useState(false);
+	const [isLogined, setisLogined] = useState(false);
+	useEffect(() => {
+		if (props.UserInfo)
+			setisLogined(true);
+		else
+			setisLogined(false);
+	})
+
+	if (isLogined)
+		return (
+			<div>
+				<Chart></Chart>
+			</div>
+		)
+	else
+		return (
+			<div>
+			</div>
+		)
 }
 //{localStorage.getItem(props.UserInfo)
 export default Home;
