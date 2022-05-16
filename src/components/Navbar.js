@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import * as BsIcons from 'react-icons/bs';
@@ -9,7 +9,7 @@ import './Navbar.css';
 /* 아이콘 컬러 전체 변경 기능 */
 import { IconContext } from 'react-icons';
 
-const UserInfo = ({ user }) => {
+const UserInfo = ({user}) => {
 	const onLogout = (e) => {
         e.preventDefault();
         fetch('http://localhost:3001/User/Logout',
@@ -25,6 +25,7 @@ const UserInfo = ({ user }) => {
                 {
                     console.log(localStorage);
                     localStorage.removeItem(user);
+					//props.props.setUserInfo(false);
                     alert('로그아웃 성공');
                 }
             });
@@ -81,7 +82,7 @@ function Navbar(props) {
 							</Link>
 						</li>
 						{/* SidebarData를 순서대로 담기*/}
-						{localStorage.getItem(props.UserInfo) ? <UserInfo user={props.UserInfo}></UserInfo> : <UserInfo user='null'></UserInfo>}
+						{localStorage.getItem(props.UserInfo) ? <UserInfo user={props.UserInfo} setUserInfo = {props.setUserInfo}></UserInfo> : <UserInfo user='null'></UserInfo>}
 					</ul>
 				</nav>
 			</IconContext.Provider>

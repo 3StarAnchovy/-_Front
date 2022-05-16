@@ -16,10 +16,10 @@ function App() {
   return (
     <div>
     <Router>
-      <Navbar UserInfo = {UserInfo} />
+      <Navbar UserInfo = {UserInfo} setUserInfo = {setUserInfo} />
       <Routes>
         <Route path="/Cctv" element={<Cctv/>} />
-        <Route path="/" element={<Home/>} exact={true} />
+        <Route path="/" element={<Home UserInfo = {UserInfo}/>} exact={true} />
         <Route path="/About" element={<About/>} />
         <Route path="/Contact" element={<Contact/>} />
         <Route path="/Login" element={<Login setUserInfo = {setUserInfo}/>} />
