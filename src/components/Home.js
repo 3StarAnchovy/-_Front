@@ -6,6 +6,7 @@ const Home = (props) => {
 	//const [User, setUser] = useState(false);
 	const [isLogined, setisLogined] = useState(false);
 	useEffect(() => {
+		console.log(props.UserInfo);
 		if (props.UserInfo)
 			setisLogined(true);
 		else
@@ -15,7 +16,7 @@ const Home = (props) => {
 	if (isLogined)
 		return (
 			<div>
-				<Chart></Chart>
+				<Chart UserInfo = {props.UserInfo}></Chart>
 			</div>
 		)
 	else
