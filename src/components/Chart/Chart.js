@@ -60,11 +60,13 @@ const Chart = ({ UserInfo }) => {
 	}, [])
 
 	return (
-		<Container>
-			<Button variant="primary" type="submit" size="sm" onClick={(e) => { senData('all', e) }}>
+		<Container style={{textAlign: 'center'}}>
+			<Button variant="primary" type="submit" size="sm"
+			onClick={(e) => { senData('all', e) }} style={{margin:'1rem'}}>
 				전체
 			</Button>
-			<Button variant="primary" type="submit" size="sm" onClick={(e) => { senData('today', e) }}>
+			<Button variant="primary" type="submit" size="sm"
+			onClick={(e) => { senData('today', e) }}>
 				오늘 하루
 			</Button>
 			<Line type="line" data={Data} />
