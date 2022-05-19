@@ -27,9 +27,8 @@ ChartJS.register(
 );
 
 const Chart = ({ UserInfo }) => {
-	const [Sensor, setSensor] = useState(false);
 	const [Data, setData] = useState(
-		{
+		[{
 			labels: ['새로고침을 눌러주세요'],
 			datasets: [
 				{
@@ -40,7 +39,40 @@ const Chart = ({ UserInfo }) => {
 					data: [1, 1, 1, 1, 1],
 					yAxisID: 'y_sub'
 				}]
-		}
+		},{
+			labels: ['새로고침을 눌러주세요'],
+			datasets: [
+				{
+					type: 'line',
+					label: 'Dataset 1',
+					borderColor: 'rgb(54, 162, 235)',
+					borderWidth: 2,
+					data: [1, 1, 1, 1, 1],
+					yAxisID: 'y_sub'
+				}]
+		},{
+			labels: ['새로고침을 눌러주세요'],
+			datasets: [
+				{
+					type: 'line',
+					label: 'Dataset 1',
+					borderColor: 'rgb(54, 162, 235)',
+					borderWidth: 2,
+					data: [1, 1, 1, 1, 1],
+					yAxisID: 'y_sub'
+				}]
+		},{
+			labels: ['새로고침을 눌러주세요'],
+			datasets: [
+				{
+					type: 'line',
+					label: 'Dataset 1',
+					borderColor: 'rgb(54, 162, 235)',
+					borderWidth: 2,
+					data: [1, 1, 1, 1, 1],
+					yAxisID: 'y_sub'
+				}]
+		}]
 	);
 
 	//let today = '05-18'
@@ -69,9 +101,10 @@ const Chart = ({ UserInfo }) => {
 			onClick={(e) => { senData('today', e) }}>
 				오늘 하루
 			</Button>
-			<Line type="line" data={Data} />
-			<Line type="line" data={Data} />
-			<Line type="line" data={Data} />
+			<Line type="line" data={Data[0]} />
+			<Line type="line" data={Data[1]} />
+			<Line type="line" data={Data[2]} />
+			<Line type="line" data={Data[3]} />
 		</Container>
 	);
 };
