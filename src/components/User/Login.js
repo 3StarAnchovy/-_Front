@@ -42,7 +42,6 @@ function Login(props) {
                     localStorage.setItem(Id, data.sessionID);
                     console.log(props);
                     props.setUserInfo(Id);
-
                     alert('로그인 성공!');
                 }
                 else if (data.result === 'checkId') {

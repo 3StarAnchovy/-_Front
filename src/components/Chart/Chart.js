@@ -26,7 +26,7 @@ ChartJS.register(
 	Legend
 );
 
-const Chart = ({UserInfo}) => {
+const Chart = ({ UserInfo }) => {
 	const [Data, setData] = useState(
 		{
 			labels: ['새로고침을 눌러주세요'],
@@ -41,24 +41,34 @@ const Chart = ({UserInfo}) => {
 				}]
 		}
 	);
-	// useEffect(() => {
 
-	// })
-	// setInterval(() => {
-
-	// }, 60000);
-	const senData = (e) => {
+	//let today = '05-18'
+	const senData = (time,e) => {
 		console.log(UserInfo);
-		chartModule.getSenData(UserInfo).then((data) => {
+		time = chartModule.currentTime(time);
+		chartModule.getSenData(UserInfo,time).then((data) => {
 			setData(chartModule.setChartData(data));
 			//console.log(result);
 		})
 	};
 
+
+	// useEffect(() => {
+
+	// })
+	// setTimeout(() => {
+	// 	chartModule.getSenData(UserInfo).then((data) => {
+	// 		setData(chartModule.setChartData(data));
+	// 	})
+	// }, 60000);
+
 	return (
 		<Container>
-			<Button variant="primary" type="submit" size="sm" onClick={senData}>
-				New Chart
+			<Button variant="primary" type="submit" size="sm" onClick={(e) =>{senData('all', e)}}>
+				전체
+			</Button>
+			<Button variant="primary" type="submit" size="sm" onClick={(e)=>{senData('today', e)}}>
+				오늘 하루
 			</Button>
 			<Line type="line" data={Data} />
 		</Container>
