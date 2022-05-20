@@ -54,9 +54,12 @@ module.exports =
 					type: 'line',
 					label: '전기전도도',
 					borderColor: 'rgb(54, 162, 235)',
+					pointBackgroundColor: 'rgb(54, 162, 235)',
+					fill: 'start',
+					backgroundColor: 'rgb(54, 162, 235, 0.2)',
 					borderWidth: 2,
 					data: data.map(x => x.ec_value),
-					yAxisID: 'y_sub'
+					yAxisID: 'y_sub',
 				}]
 		},{
 			labels: data.map(x => x.time),
@@ -65,6 +68,9 @@ module.exports =
 					type: 'line',
 					label: '온도(섭씨)',
 					borderColor: 'rgb(54, 162, 235)',
+					pointBackgroundColor: 'rgb(54, 162, 235)',
+					fill: 'start',
+					backgroundColor: 'rgb(54, 162, 235, 0.2)',
 					borderWidth: 2,
 					data: data.map(x => x.tem),
 					yAxisID: 'y_sub'
@@ -76,6 +82,9 @@ module.exports =
 					type: 'line',
 					label: '습도',
 					borderColor: 'rgb(54, 162, 235)',
+					pointBackgroundColor: 'rgb(54, 162, 235)',
+					fill: 'start',
+					backgroundColor: 'rgb(54, 162, 235, 0.2)',
 					borderWidth: 2,
 					data: data.map(x => x.hum),
 					yAxisID: 'y_sub'
@@ -87,6 +96,9 @@ module.exports =
 					type: 'line',
 					label: '물 수위',
 					borderColor: 'rgb(54, 162, 235)',
+					pointBackgroundColor: 'rgb(54, 162, 235)',
+					fill: 'start',
+					backgroundColor: 'rgb(54, 162, 235, 0.2)',
 					borderWidth: 2,
 					data: data.map(x => x.water_level),
 					yAxisID: 'y_sub'

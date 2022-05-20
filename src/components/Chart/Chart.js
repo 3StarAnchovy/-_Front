@@ -14,6 +14,7 @@ import {
 	Title,
 	Tooltip,
 	Legend,
+	Filler
 } from 'chart.js';
 
 ChartJS.register(
@@ -23,7 +24,8 @@ ChartJS.register(
 	LineElement,
 	Title,
 	Tooltip,
-	Legend
+	Legend,
+	Filler
 );
 
 const Chart = ({ UserInfo }) => {
@@ -92,7 +94,7 @@ const Chart = ({ UserInfo }) => {
 	}, [])
 
 	return (
-		<Container style={{textAlign: 'center'}}>
+		<Container style={{textAlign: 'center', backgroundColor:'yellow', maxWidth:'100%'}}>
 			<Button variant="primary" type="submit" size="sm"
 			onClick={(e) => { senData('all', e) }} style={{margin:'1rem'}}>
 				전체
