@@ -2,8 +2,6 @@ module.exports =
 {
 	getSenData: async (id,time) => {
 		return new Promise(async (resolve, rejects) => {
-			console.log(id);
-			console.log(time);
 			try {
 				const body = {
 					id: id,
@@ -18,7 +16,6 @@ module.exports =
 						credentials: "include",
 						body: JSON.stringify(body)
 					}).then(res => res.json()).then(sen => {
-						console.log(sen);
 						resolve(sen);
 					});
 			} catch (err) {
@@ -33,13 +30,8 @@ module.exports =
 		let month = ('0' + (today.getMonth() + 1)).slice(-2);
 		let day = ('0' + today.getDate()).slice(-2);
 		let dateString = year + '-' + month + '-' + day;
-		if(time == 'today')
-		{
-			console.log(year + '-' + month + '-' + day);
-			return (year + '-' + month + '-' + day);
-		}
-		else
-			return 'all';
+		if(time == 'today') return dateString;
+		else return 'all';
 	},
 
 	setChartData: (data) => {
@@ -51,13 +43,14 @@ module.exports =
 			labels: data.map(x => x.time),
 			datasets: [
 				{
-					type: 'line',
+					title: '전기전도도 차트',
 					label: '전기전도도',
 					borderColor: 'rgb(54, 162, 235)',
 					pointBackgroundColor: 'rgb(54, 162, 235)',
 					fill: 'start',
 					backgroundColor: 'rgb(54, 162, 235, 0.2)',
 					borderWidth: 2,
+					responsive: 'false',
 					data: data.map(x => x.ec_value),
 					yAxisID: 'y_sub',
 				}]
@@ -65,7 +58,6 @@ module.exports =
 			labels: data.map(x => x.time),
 			datasets: [
 				{
-					type: 'line',
 					label: '온도(섭씨)',
 					borderColor: 'rgb(54, 162, 235)',
 					pointBackgroundColor: 'rgb(54, 162, 235)',
@@ -79,7 +71,6 @@ module.exports =
 			labels: data.map(x => x.time),
 			datasets: [
 				{
-					type: 'line',
 					label: '습도',
 					borderColor: 'rgb(54, 162, 235)',
 					pointBackgroundColor: 'rgb(54, 162, 235)',
@@ -93,7 +84,6 @@ module.exports =
 			labels: data.map(x => x.time),
 			datasets: [
 				{
-					type: 'line',
 					label: '물 수위',
 					borderColor: 'rgb(54, 162, 235)',
 					pointBackgroundColor: 'rgb(54, 162, 235)',

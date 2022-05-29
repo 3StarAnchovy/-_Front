@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import Button from "react-bootstrap/Button";
 import { Line } from 'react-chartjs-2';
 import chartModule from './chartModule';
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 //import Chart from 'chart.js/auto';
 import {
 	Chart as ChartJS,
@@ -41,7 +43,7 @@ const Chart = ({ UserInfo }) => {
 					data: [1, 1, 1, 1, 1],
 					yAxisID: 'y_sub'
 				}]
-		},{
+		}, {
 			labels: ['새로고침을 눌러주세요'],
 			datasets: [
 				{
@@ -52,7 +54,7 @@ const Chart = ({ UserInfo }) => {
 					data: [1, 1, 1, 1, 1],
 					yAxisID: 'y_sub'
 				}]
-		},{
+		}, {
 			labels: ['새로고침을 눌러주세요'],
 			datasets: [
 				{
@@ -63,7 +65,7 @@ const Chart = ({ UserInfo }) => {
 					data: [1, 1, 1, 1, 1],
 					yAxisID: 'y_sub'
 				}]
-		},{
+		}, {
 			labels: ['새로고침을 눌러주세요'],
 			datasets: [
 				{
@@ -93,20 +95,38 @@ const Chart = ({ UserInfo }) => {
 		})
 	}, [])
 
+	// const canvas = document.querySelector(".canvas");
+	// const context = canvas.getContext("2d");
+	// const myChartOne = document.getElementById("myChartOne").getContext("2d");
+	// const lineChar = new Chart(myChartOne, Data[0]);
+
+
 	return (
-		<Container style={{textAlign: 'center', backgroundColor:'yellow', maxWidth:'100%'}}>
+		<Container style={{ textAlign: 'center', backgroundColor: 'yellow', maxWidth: '150%' }}>
 			<Button variant="primary" type="submit" size="sm"
-			onClick={(e) => { senData('all', e) }} style={{margin:'1rem'}}>
+				onClick={(e) => { senData('all', e) }} style={{ margin: '1rem' }}>
 				전체
 			</Button>
 			<Button variant="primary" type="submit" size="sm"
-			onClick={(e) => { senData('today', e) }}>
+				onClick={(e) => { senData('today', e) }}>
 				오늘 하루
 			</Button>
-			<Line type="line" data={Data[0]} />
-			<Line type="line" data={Data[1]} />
-			<Line type="line" data={Data[2]} />
-			<Line type="line" data={Data[3]} />
+			<Row>
+				<Col md='6'>
+					<Line type="line" data={Data[0]} />
+				</Col>
+				<Col md='6'>
+					<Line type="line" data={Data[1]} />
+				</Col>
+			</Row>
+			<Row>
+				<Col md='6'>
+					<Line type="line" data={Data[2]} />
+				</Col>
+				<Col md='6'>
+					<Line type="line" data={Data[3]} />
+				</Col>
+			</Row>
 		</Container>
 	);
 };
