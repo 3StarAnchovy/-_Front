@@ -66,6 +66,7 @@ const Chart = ({ UserInfo }) => {
 					yAxisID: 'y_sub'
 				}]
 		}, {
+
 			labels: ['새로고침을 눌러주세요'],
 			datasets: [
 				{
@@ -82,14 +83,14 @@ const Chart = ({ UserInfo }) => {
 	//let today = '05-18'
 	const senData = (time, e) => {
 		console.log(UserInfo);
-		time = chartModule.currentTime(time);
+		//time = chartModule.currentTime(time);
 		chartModule.getSenData(UserInfo, time).then((data) => {
 			setData(chartModule.setChartData(data));
 		})
 	};
 
 	useEffect(() => {
-		let time = chartModule.currentTime('all');
+		let time = 'all';
 		chartModule.getSenData(UserInfo, time).then((data) => {
 			setData(chartModule.setChartData(data));
 		})

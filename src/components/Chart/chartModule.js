@@ -36,6 +36,7 @@ module.exports =
 
 	setChartData: (data) => {
 		data = data.results;
+		console.log(data);
 
 		//console.log(this.convertTime(data[0].time));
 		//console.log(data[0].ec_value);

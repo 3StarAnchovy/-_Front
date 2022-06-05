@@ -15,7 +15,7 @@ const Home = (props) => {
 
 	if (isLogined)
 		return (
-			<div style={{textAlign:'center', backgroundColor:'yellow'}}>
+			<div style={{textAlign:'center'}}>
 				<Chart UserInfo = {props.UserInfo}></Chart>
 			</div>
 		)
