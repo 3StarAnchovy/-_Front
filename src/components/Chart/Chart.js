@@ -102,7 +102,7 @@ const Chart = ({ UserInfo }) => {
 
 
 	return (
-		<Container style={{ textAlign: 'center', backgroundColor: 'yellow', maxWidth: '150%' }}>
+		<div>
 			<Button variant="primary" type="submit" size="sm"
 				onClick={(e) => { senData('all', e) }} style={{ margin: '1rem' }}>
 				전체
@@ -127,7 +127,7 @@ const Chart = ({ UserInfo }) => {
 					<Line type="line" data={Data[3]} />
 				</Col>
 			</Row>
-		</Container>
+		</div>
 	);
 };
 
