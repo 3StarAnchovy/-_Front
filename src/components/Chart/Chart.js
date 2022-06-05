@@ -103,7 +103,7 @@ const Chart = ({ UserInfo }) => {
 
 
 	return (
-		<div>
+		<div style={{maxWidth:'85%', margin:'auto'}}>
 			<Button variant="primary" type="submit" size="sm"
 				onClick={(e) => { senData('all', e) }} style={{ margin: '1rem' }}>
 				전체
@@ -112,20 +112,20 @@ const Chart = ({ UserInfo }) => {
 				onClick={(e) => { senData('today', e) }}>
 				오늘 하루
 			</Button>
-			<Row>
+			<Row style={{borderBottom:'20px solid transparent'}}>
 				<Col md='6'>
-					<Line type="line" data={Data[0]} />
+					<Line type="line" data={Data[0]} style={{backgroundColor:'#F5F5F7',borderRadius:'18px'}}/>
 				</Col>
 				<Col md='6'>
-					<Line type="line" data={Data[1]} />
+					<Line type="line" data={Data[1]}  style={{backgroundColor:'#F5F5F7',borderRadius:'18px'}}/>
 				</Col>
 			</Row>
-			<Row>
+			<Row style={{borderBottom:'20px solid transparent'}}>
 				<Col md='6'>
-					<Line type="line" data={Data[2]} />
+					<Line type="line" data={Data[2]}  style={{backgroundColor:'#F5F5F7',borderRadius:'18px'}}/>
 				</Col>
 				<Col md='6'>
-					<Line type="line" data={Data[3]} />
+					<Line type="line" data={Data[3]}  style={{backgroundColor:'#F5F5F7',borderRadius:'18px'}}/>
 				</Col>
 			</Row>
 		</div>
