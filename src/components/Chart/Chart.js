@@ -96,12 +96,6 @@ const Chart = ({ UserInfo }) => {
 		})
 	}, [])
 
-	// const canvas = document.querySelector(".canvas");
-	// const context = canvas.getContext("2d");
-	// const myChartOne = document.getElementById("myChartOne").getContext("2d");
-	// const lineChar = new Chart(myChartOne, Data[0]);
-
-
 	return (
 		<div style={{maxWidth:'85%', margin:'auto'}}>
 			<Button variant="primary" type="submit" size="sm"
