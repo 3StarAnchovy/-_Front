@@ -109,8 +109,12 @@ const Chart = ({ UserInfo }) => {
 				전체
 			</Button>
 			<Button variant="primary" type="submit" size="sm"
+				onClick={(e) => { senData('week', e) }} style={{ marginRight: '1rem' }}>
+				일주일
+			</Button>
+			<Button variant="primary" type="submit" size="sm"
 				onClick={(e) => { senData('today', e) }}>
-				오늘 하루
+				하루
 			</Button>
 			<Row style={{borderBottom:'20px solid transparent'}}>
 				<Col md='6'>
