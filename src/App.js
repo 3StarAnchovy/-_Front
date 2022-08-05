@@ -18,12 +18,12 @@ function App() {
       <Navbar UserInfo = {UserInfo} setUserInfo = {setUserInfo} />
       <Routes>
         <Route path="/Cctv" element={<Cctv/>} />
-        <Route path="/" element={<Home UserInfo = {UserInfo}/>} exact={true} />
+        <Route path="/" element={<Home UserInfo = {UserInfo}/>}  />
         <Route path="/About" element={<About/>} />
         <Route path="/Contact" element={<Contact/>} />
         <Route path="/Login" element={<Login setUserInfo = {setUserInfo}/>} />
         <Route path="/SignUp" element={<SignUp/>} />
-        <Route path="/Logout" element={<Logout setUserInfo = {setUserInfo}/>} />
+        <Route path="/Logout" element={<Logout UserInfo = {UserInfo} setUserInfo = {setUserInfo}/>} />
       </Routes>
     </Router>
     </div>

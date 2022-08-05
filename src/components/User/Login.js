@@ -6,6 +6,7 @@ import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import axios from 'axios';
 
 axios.defaults.withCredentials = true;//백 & 서버 쿠키 공유 해결방법
@@ -14,6 +15,7 @@ axios.defaults.withCredentials = true;//백 & 서버 쿠키 공유 해결방법
 function Login(props) {
     const [Id, setId] = useState(false);
     const [Password, setPassword] = useState(false);
+    const [IsLogin, setIsLogined] = useState(false);
 
     const onIdHandler = (e) => {
         setId(e.currentTarget.value);
@@ -43,6 +45,8 @@ function Login(props) {
                     console.log(props);
                     props.setUserInfo(Id);
                     alert('로그인 성공!');
+                    setIsLogined(true);
+                    //document.location.href = '/'
                 }
                 else if (data.result === 'checkId') {
                     alert('존재하지 않는 아이디입니다.');
@@ -104,6 +108,9 @@ function Login(props) {
                     </div>
                 </Form>
             </Container>
+            <div>
+                {IsLogin && <Navigate to = '/'></Navigate>}
+            </div>
         </div>
     );
 }

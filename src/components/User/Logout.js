@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Row from 'react-bootstrap/Row';
@@ -32,9 +34,10 @@ const Logoout = (props) => {
                 }
             });
         console.log("this");
-    }, []);
+        //document.location.href = '/'
+    });
     return (
-        <Link to = "/"></Link>
+        <Navigate to = '/'/>
     );
 }
 export default Logoout;
