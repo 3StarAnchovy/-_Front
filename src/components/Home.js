@@ -22,6 +22,7 @@ const Home = (props) => {
 	else
 		return (
 			<div>
+				<h1>hjihihihi</h1>
 			</div>
 		)
 }

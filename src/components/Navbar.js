@@ -46,9 +46,13 @@ const UserInfo = (props) => {
 					<span>Login</span>
 				</Link>
 			</li> : <li className='nav-text'>
-				<Button variant="primary" type="submit" size="sm" onClick={onLogout}>
+				{/* <Button variant="primary" type="submit" size="sm" onClick={onLogout}>
 					로그아웃
-				</Button>
+				</Button> */}
+				<Link to='/Logout'>
+					<BsIcons.BsPersonCircle />
+					<span>Logout</span>
+				</Link>
 			</li>
 			}
 

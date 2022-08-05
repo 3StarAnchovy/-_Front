@@ -23,7 +23,7 @@ function App() {
         <Route path="/Contact" element={<Contact/>} />
         <Route path="/Login" element={<Login setUserInfo = {setUserInfo}/>} />
         <Route path="/SignUp" element={<SignUp/>} />
-        <Route path="/Logout" element={<Logout/>} />
+        <Route path="/Logout" element={<Logout setUserInfo = {setUserInfo}/>} />
       </Routes>
     </Router>
     </div>
