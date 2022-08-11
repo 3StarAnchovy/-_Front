@@ -33,9 +33,9 @@ const UserInfo = (props) => {
 					</Link>
 				</li>
 				<li className='nav-text'>
-					<Link to='/Resister'>
+					<Link to='/Register'>
 						<BsIcons.BsApple />
-						<span>Resister</span>
+						<span>Register</span>
 					</Link>
 			</li></div>
 			}
