@@ -66,7 +66,6 @@ function SignUp() {
     const onSubmit = (e) => {
         if (isSubmitValid()) {
             e.preventDefault();
-            console.log("클릭");
             let body = {
                 id: Id,
                 pw: Password,

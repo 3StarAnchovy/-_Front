@@ -8,6 +8,7 @@ import Contact from './components/Contact';
 import Login from './components/User/Login';
 import SignUp from './components/User/SignUp';
 import Logout from './components/User/Logout';
+import Resister from './components/Resister';
 import React, { useEffect, useState } from 'react';
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
         <Route path="/Login" element={<Login setUserInfo = {setUserInfo}/>} />
         <Route path="/SignUp" element={<SignUp/>} />
         <Route path="/Logout" element={<Logout UserInfo = {UserInfo} setUserInfo = {setUserInfo}/>} />
+        <Route path="/Resister" element={<Resister/>}  />
       </Routes>
     </Router>
     </div>

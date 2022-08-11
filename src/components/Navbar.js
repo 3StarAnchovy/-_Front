@@ -17,27 +17,8 @@ const UserInfo = (props) => {
 			setisLogined(true);
 		else
 			setisLogined(false);
-	})
-	const onLogout = (e) => {
-		e.preventDefault();
-		fetch('http://localhost:3001/User/Logout',
-			{
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-					"Authorization": localStorage.getItem(props.UserInfo)
-				},
-				credentials: 'include',
-			}).then(res => res.json()).then(data => {
-				if (data.result === 'true') {
-					console.log(localStorage);
-					localStorage.removeItem(props.UserInfo);
-					props.setUserInfo(false);
-					console.log(props);
-					alert('로그아웃 성공');
-				}
-			});
-	}
+	});
+
 	return (
 		<nav>
 			{isLogined === false ? <li className='nav-text'>
@@ -45,15 +26,18 @@ const UserInfo = (props) => {
 					<BsIcons.BsPersonCircle />
 					<span>Login</span>
 				</Link>
-			</li> : <li className='nav-text'>
-				{/* <Button variant="primary" type="submit" size="sm" onClick={onLogout}>
-					로그아웃
-				</Button> */}
-				<Link to='/Logout'>
-					<BsIcons.BsPersonCircle />
-					<span>Logout</span>
-				</Link>
-			</li>
+			</li> : <div><li className='nav-text'>
+					<Link to='/Logout'>
+						<BsIcons.BsPersonCircle />
+						<span>Logout</span>
+					</Link>
+				</li>
+				<li className='nav-text'>
+					<Link to='/Resister'>
+						<BsIcons.BsApple />
+						<span>Resister</span>
+					</Link>
+			</li></div>
 			}
 
 			{SidebarData.map((item, index) => {
