@@ -25,7 +25,7 @@ function App() {
         <Route path="/Login" element={<Login setUserInfo = {setUserInfo}/>} />
         <Route path="/SignUp" element={<SignUp/>} />
         <Route path="/Logout" element={<Logout UserInfo = {UserInfo} setUserInfo = {setUserInfo}/>} />
-        <Route path="/Register" element={<Register/>}  />
+        <Route path="/Register" element={<Register UserInfo = {UserInfo}/>}  />
       </Routes>
     </Router>
     </div>

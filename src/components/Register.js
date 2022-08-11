@@ -6,7 +6,7 @@ import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const Register = () => {
+const Register = (props) => {
     const [farmId, setfarmId] = useState(false);
     const onfarmIdHandler = (e) => {
         setfarmId(e.currentTarget.value);
@@ -14,6 +14,7 @@ const Register = () => {
     const onSubmit = (e) => {
         e.preventDefault();
         let body = {
+            userId: props.UserInfo,
             farmId: farmId
         }
         console.log(body)
