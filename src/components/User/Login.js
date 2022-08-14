@@ -7,10 +7,6 @@ import Container from 'react-bootstrap/Container';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from "react-router-dom";
 import { Navigate } from "react-router-dom";
-import axios from 'axios';
-
-axios.defaults.withCredentials = true;//백 & 서버 쿠키 공유 해결방법
-
 
 function Login(props) {
     const [Id, setId] = useState(false);
@@ -46,7 +42,6 @@ function Login(props) {
                     props.setUserInfo(Id);
                     alert('로그인 성공!');
                     setIsLogined(true);
-                    //document.location.href = '/'
                 }
                 else if (data.result === 'checkId') {
                     alert('존재하지 않는 아이디입니다.');
@@ -58,24 +53,6 @@ function Login(props) {
             });
     }
 
-    // const onLogout = (e) => {
-    //     e.preventDefault();
-    //     fetch('http://localhost:3001/User/Logout',
-    //         {
-    //             method: "POST",
-    //             headers: {
-    //                 "Content-Type": "application/json",
-    //                 "Authorization": localStorage.getItem(Id)
-    //             },
-    //             credentials: 'include',
-    //         }).then(res => res.json()).then(data => {
-    //             if (data.result === 'true') {
-    //                 console.log(localStorage);
-    //                 localStorage.removeItem(Id);
-    //                 alert('로그아웃 성공');
-    //             }
-    //         });
-    // }
     console.log(props.UserInfo,"this");
     return (
         <div>
@@ -97,9 +74,6 @@ function Login(props) {
                         <Button variant="primary" type="submit" size="sm" onClick={onSubmit}>
                             로그인
                         </Button>
-                        {/* <Button variant="primary" type="submit" size="sm" onClick={onLogout}>
-                            로그아웃
-                        </Button> */}
                         <Link to='/SignUp' style={{ display: 'inline-grid', textDecoration: 'none' }}>
                             <Button variant="success" size="sm">
                                 회원가입

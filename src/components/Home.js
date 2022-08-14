@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 //import { BrowserRouter, Route } from 'react-router-dom';
 import Chart from './Chart/Chart';
 
@@ -22,7 +22,7 @@ const Home = (props) => {
 	else
 		return (
 			<div>
-				<h1>hjihihihi</h1>
+				<h1>Here is Home before Login</h1>
 			</div>
 		)
 }

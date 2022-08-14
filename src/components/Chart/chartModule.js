@@ -38,8 +38,6 @@ module.exports =
 		data = data.results;
 		console.log(data);
 
-		//console.log(this.convertTime(data[0].time));
-		//console.log(data[0].ec_value);
 		let result = [{
 			labels: data.map(x => x.time),
 			datasets: [
@@ -95,7 +93,6 @@ module.exports =
 					yAxisID: 'y_sub'
 				}]
 		}]
-		//console.log(result);
 		return result
 	}
 }
