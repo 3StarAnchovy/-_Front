@@ -31,6 +31,7 @@ ChartJS.register(
 );
 
 const Chart = ({ UserInfo }) => {
+	const [List, setList] = useState(false);
 	const [Data, setData] = useState(
 		[{
 			labels: ['새로고침을 눌러주세요'],
@@ -91,6 +92,9 @@ const Chart = ({ UserInfo }) => {
 
 	useEffect(() => {
 		let time = 'all';
+		chartModule.getList(UserInfo).then((data) =>{
+			console.log(data);
+		})
 		chartModule.getSenData(UserInfo, time).then((data) => {
 			setData(chartModule.setChartData(data));
 		})

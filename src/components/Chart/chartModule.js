@@ -1,11 +1,11 @@
 module.exports =
 {
-	getSenData: async (id,time) => {
+	getSenData: async (id, time) => {
 		return new Promise(async (resolve, rejects) => {
 			try {
 				const body = {
 					id: id,
-					time : time
+					time: time
 				}
 				fetch('http://localhost:3001/Sensor/Chart',
 					{
@@ -24,13 +24,38 @@ module.exports =
 			}
 		})
 	},
-	currentTime : (time) => {
+	getList: async (userId) => {
+		return new Promise(async (resolve, rejects) => {
+			try {
+				const body = {
+					id: userId
+				}
+				fetch('http://localhost:3001/Sensor/List',
+					{
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json"
+						},
+						credentials: "include",
+						body: JSON.stringify(body)
+					}).then(res => res.json()).then(sen => {
+						resolve(sen);
+					});
+			}
+			catch (err) {
+				console.log(err);
+				rejects(err);
+			}
+		})
+	},
+
+	currentTime: (time) => {
 		let today = new Date();
 		let year = today.getFullYear();
 		let month = ('0' + (today.getMonth() + 1)).slice(-2);
 		let day = ('0' + today.getDate()).slice(-2);
 		let dateString = year + '-' + month + '-' + day;
-		if(time == 'today') return dateString;
+		if (time == 'today') return dateString;
 		else return 'all';
 	},
 
@@ -53,7 +78,7 @@ module.exports =
 					data: data.map(x => x.ec_value),
 					yAxisID: 'y_sub',
 				}]
-		},{
+		}, {
 			labels: data.map(x => x.time),
 			datasets: [
 				{
@@ -66,7 +91,7 @@ module.exports =
 					data: data.map(x => x.tem),
 					yAxisID: 'y_sub'
 				}]
-		},{
+		}, {
 			labels: data.map(x => x.time),
 			datasets: [
 				{
@@ -79,7 +104,7 @@ module.exports =
 					data: data.map(x => x.hum),
 					yAxisID: 'y_sub'
 				}]
-		},{
+		}, {
 			labels: data.map(x => x.time),
 			datasets: [
 				{
