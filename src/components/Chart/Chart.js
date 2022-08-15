@@ -6,6 +6,7 @@ import { Line } from 'react-chartjs-2';
 import chartModule from './chartModule';
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import SelectBox from './SelectBox';
 //import Chart from 'chart.js/auto';
 import {
 	Chart as ChartJS,
@@ -30,8 +31,11 @@ ChartJS.register(
 	Filler
 );
 
+
+
 const Chart = ({ UserInfo }) => {
-	const [List, setList] = useState(false);
+	const [List, setList] = useState([]);
+	const [currentList, setCurrentList] = useState(true);
 	const [Data, setData] = useState(
 		[{
 			labels: ['새로고침을 눌러주세요'],
@@ -83,9 +87,7 @@ const Chart = ({ UserInfo }) => {
 
 	//let today = '05-18'
 	const senData = (time, e) => {
-		console.log(UserInfo);
-		//time = chartModule.currentTime(time);
-		chartModule.getSenData(UserInfo, time).then((data) => {
+		chartModule.getSenData(currentList, time).then((data) => {
 			setData(chartModule.setChartData(data));
 		})
 	};
@@ -93,15 +95,17 @@ const Chart = ({ UserInfo }) => {
 	useEffect(() => {
 		let time = 'all';
 		chartModule.getList(UserInfo).then((data) =>{
-			console.log(data);
+			setList(data.result);
+			console.log(data.result);
 		})
-		chartModule.getSenData(UserInfo, time).then((data) => {
+		chartModule.getSenData(currentList, time).then((data) => {
 			setData(chartModule.setChartData(data));
 		})
-	}, [])
+	},[])
 
 	return (
 		<div style={{maxWidth:'85%', margin:'auto'}}>
+			<SelectBox List = {List} setCurrentList = {setCurrentList}></SelectBox>
 			<Button variant="primary" type="submit" size="sm"
 				onClick={(e) => { senData('all', e) }} style={{ margin: '1rem' }}>
 				전체

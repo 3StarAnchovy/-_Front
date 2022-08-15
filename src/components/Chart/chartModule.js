@@ -24,11 +24,11 @@ module.exports =
 			}
 		})
 	},
-	getList: async (userId) => {
+	getList: async (id) => {
 		return new Promise(async (resolve, rejects) => {
 			try {
 				const body = {
-					id: userId
+					id: id
 				}
 				fetch('http://localhost:3001/Sensor/List',
 					{
