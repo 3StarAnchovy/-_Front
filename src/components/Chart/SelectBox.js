@@ -4,10 +4,14 @@ import chartModule from './chartModule';
 const SelectBox = (props) => {
 	let list = [];
 	const handleSelect = (e) => {
+		let time='all';
+		chartModule.getSenData(e.target.value, time).then((data) => {
+			props.setData(chartModule.setChartData(data));
+		});
 		props.setCurrentList(e.target.value);
 		console.log(e.target.value);
 	}
-	const initList = (list) =>{
+	const initList = (list) => {
 		for (let i = 0; i < props.List.length; i++)
 			list.push(props.List[i].farm_id);
 	}
@@ -17,7 +21,10 @@ const SelectBox = (props) => {
 	console.log(typeof (props.List));
 	return (
 		<div>
-			<select onChange={handleSelect} defaultValue = {"농장선택해주세용"}>
+			<select onChange={handleSelect}>
+				<option value="default" disabled>
+					농장을 선택해주세요.
+				</option>
 				{
 					list.map((item) => (
 						<option value={item} key={item}>
@@ -26,10 +33,6 @@ const SelectBox = (props) => {
 					))
 				}
 			</select>
-			<hr />
-			<p>
-				{/* Selected: <b>{Selected}</b> */}
-			</p>
 		</div>
 	);
 }

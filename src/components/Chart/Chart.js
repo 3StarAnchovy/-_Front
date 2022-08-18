@@ -89,23 +89,24 @@ const Chart = ({ UserInfo }) => {
 	const senData = (time, e) => {
 		chartModule.getSenData(currentList, time).then((data) => {
 			setData(chartModule.setChartData(data));
-		})
-	};
+		});
+	}
 
 	useEffect(() => {
 		let time = 'all';
 		chartModule.getList(UserInfo).then((data) =>{
 			setList(data.result);
 			console.log(data.result);
-		})
-		chartModule.getSenData(currentList, time).then((data) => {
-			setData(chartModule.setChartData(data));
-		})
-	},[])
+			chartModule.getSenData(data.result[0].farm_id, time).then((data) => {
+				setData(chartModule.setChartData(data));
+			});
+			setCurrentList(data.result[0].farm_id);
+		});
+	},[]);
 
 	return (
 		<div style={{maxWidth:'85%', margin:'auto'}}>
-			<SelectBox List = {List} setCurrentList = {setCurrentList}></SelectBox>
+			<SelectBox List = {List} setCurrentList = {setCurrentList} setData={setData}></SelectBox>
 			<Button variant="primary" type="submit" size="sm"
 				onClick={(e) => { senData('all', e) }} style={{ margin: '1rem' }}>
 				전체
